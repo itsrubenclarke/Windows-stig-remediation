@@ -10,7 +10,10 @@
 
 This repository documents my practical approach to identifying and remediating Windows 10 STIG compliance issues using Tenable and PowerShell.
 
-After running a credentialed compliance scan in Tenable, multiple misconfigurations were detected against the [DISA Windows 10 STIG baseline]([url](https://en.wikipedia.org/wiki/Security_Technical_Implementation_Guide)). Each failure represents a gap in system hardening, including areas like audit logging, privilege management, and access control.
+After running a credentialed compliance scan in Tenable, multiple misconfigurations were detected against the:
+- [DISA Windows 10 STIG baseline](https://en.wikipedia.org/wiki/Security_Technical_Implementation_Guide).
+  
+Each failure represents a gap in system hardening, including areas like audit logging, privilege management, and access control.
 
 To address these, I developed a series of targeted PowerShell scripts, each focused on remediating a specific STIG control. These scripts were tested individually, and their success was verified through subsequent Tenable scans.
 
