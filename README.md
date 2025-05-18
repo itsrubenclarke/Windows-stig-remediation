@@ -1,4 +1,4 @@
-# 💻 Windows 10 STIG Implementations
+# 💻 Windows 10 STIG Compliance & Remediation
 
 ![Scripted in PowerShell](https://img.shields.io/badge/Scripted%20in-PowerShell-blue)
 ![Status](https://img.shields.io/badge/Status-Active-green)
@@ -8,23 +8,24 @@
 
 ### 📖 Overview
 
-This repository documents my practical approach to identifying and remediating Windows 10 STIG compliance issues using Tenable and PowerShell.
+This repository demonstrates a structured approach to identifying and addressing technical noncompliance when compared with the: 
 
-After running a credentialed compliance scan in Tenable, multiple misconfigurations were detected against the:
 - [DISA Windows 10 STIG baseline](https://en.wikipedia.org/wiki/Security_Technical_Implementation_Guide).
   
-Each failure represents a gap in system hardening, including areas like audit logging, privilege management, and access control.
+It combines enterprise compliance scanning with automated remediation using PowerShell.
 
-To address these, I developed a series of targeted PowerShell scripts, each focused on remediating a specific STIG control. These scripts were tested individually, and their success was verified through subsequent Tenable scans.
+After conducting a credentialed compliance scan in Tenable, several configuration issues were identified that introduced risks to system integrity, auditability, and baseline hardening. These findings highlighted control failures across areas such as audit logging, access control, and privilege management.
+
+To correct these issues, I developed a set of targeted PowerShell scripts, each aligned to a specific STIG control. The remediations were individually applied and verified through follow-up scans to ensure that each finding was resolved and the system returned to a compliant state. This process created an auditable trail of corrective action and supports ongoing assurance and compliance validation.
 
 This project demonstrates hands-on technical capability in:
 
-- 🔍 Identifying misconfigurations using enterprise tools (Tenable.io)  
-- 🛠 Writing and applying PowerShell remediations for specific findings  
-- ✅ Confirming fixes through iterative scanning and validation  
-- 📁 Documenting each implementation for repeatability and audit readiness  
+- 🔍 Identifying and analysing technical nonconformities using enterprise tools
+- 🛠 Designing and applying corrective actions mapped to specific control objectives  
+- ✅ Validating remediation outcomes through measurable evidence  
+- 📁 Maintaining documentation that supports audit readiness and continual improvement
 
-This portfolio serves as both a technical showcase and a personal record of progress in implementing security controls aligned with DISA STIG requirements.
+This portfolio serves as both a technical showcase and a practical demonstration of how an information security management system can be supported by automated control remediation and verification.
 
 ---
 
