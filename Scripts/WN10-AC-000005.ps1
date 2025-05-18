@@ -25,6 +25,27 @@
     Run this script as an administrator from PowerShell:
     Example:
     PS C:\> .\WN10-AC-000005.ps1
+
+.VERIFICATION
+    To verify that the Account Lockout Duration has been correctly applied:
+
+    Option 1 – GUI Method:
+    1. Press Win + R, type `gpedit.msc`, and press Enter.
+    2. Navigate to:
+       Computer Configuration → Windows Settings → Security Settings → Account Policies → Account Lockout Policy
+    3. Confirm that "Account lockout duration" is set to 15 minutes.
+       If the value is lower or not defined, the remediation has not applied.
+
+    Option 2 – Command Line Method:
+    1. Export the local security policy to a temporary file:
+       secedit /export /cfg "$env:temp\verify-lockout-duration.inf"
+    2. Run the following command:
+       Select-String -Path "$env:temp\verify-lockout-duration.inf" -Pattern "LockoutDuration"
+    3. Expected output:
+       LockoutDuration = 15
+
+    4. (Optional) Clean up:
+       Remove-Item "$env:temp\verify-lockout-duration.inf"
 #>
 
 # STEP 1: Define a temporary file path where we will export the current security settings.
