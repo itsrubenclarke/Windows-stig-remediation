@@ -1,4 +1,4 @@
- <#
+<#
 .SYNOPSIS
     This PowerShell script configures the system to lock a user account after 3 failed login attempts, in compliance with STIG ID WN10-AC-000010.
 
