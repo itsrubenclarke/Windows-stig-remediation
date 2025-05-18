@@ -78,5 +78,5 @@ secedit /configure /db "$env:windir\security\local.sdb" /cfg $tempInfPath /quiet
 # STEP 7: Delete the temporary file to keep the system clean.
 Remove-Item $tempInfPath -Force
 
-# STEP 8: Confirm the setting has been applied.
+# STEP 8: Output confirmation to the terminal so the user knows the change has been applied.
 Write-Host "STIG WN10-AC-000005 remediated. Account lockout duration has been set to 15 minutes."
