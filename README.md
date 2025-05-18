@@ -52,7 +52,7 @@ You can review the full Tenable scan results before and after remediation:
 | WN10-AU-000060 | The system must be configured to audit Logon/Logoff - Group Membership successes. | [View Details](./WN10-AU-000060) |
 | WN10-AU-000110 | The system must be configured to audit Privilege Use - Sensitive Privilege Use failures. | [View Details](./WN10-AU-000110) |
 | WN10-AU-000120 | The system must be configured to audit System - IPSec Driver failures. | [View Details](./WN10-AU-000120) |
-| WN10-AU-000510 | Audit System Failure Events | [View Details](./WN10-AU-000510) |
+| WN10-AU-000500 | The Application event log size must be configured to 32768 KB or greater. | [View Details](./WN10-AU-000500) |
 | WN10-CC-000007 | Windows 10 must cover or disable the built-in or attached camera when not in use. | [View Details](./WN10-CC-000007) |
 | WN10-CC-000010 | The display of slide shows on the lock screen must be disabled. | [View Details](./WN10-CC-000010) |
 
