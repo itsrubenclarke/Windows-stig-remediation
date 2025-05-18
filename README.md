@@ -1,4 +1,4 @@
-# 💻 Windows 10 STIG Remediation & Automation
+# 💻 Windows 10 STIG Implementations
 
 ![Scripted in PowerShell](https://img.shields.io/badge/Scripted%20in-PowerShell-blue)
 ![Status](https://img.shields.io/badge/Status-Active-green)
