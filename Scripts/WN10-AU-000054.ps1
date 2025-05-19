@@ -1,13 +1,11 @@
 <#
 .SYNOPSIS
-    This PowerShell script configures the system to audit Account Lockout failures, in alignment with STIG ID WN10-AU-000054.
+    This PowerShell script enables auditing for Account Lockout failures, in alignment with STIG ID WN10-AU-000054.
 
 .DESCRIPTION
-    Account lockout auditing is critical for identifying potentially malicious logon attempts, especially brute-force attacks.
-    This script applies the necessary audit policy at the Local Group Policy Object (LGPO) level using `secedit`.
-
-    To ensure the Group Policy Management Console reflects that Logon/Logoff auditing is configured,
-    this script also sets a secondary related subcategory ("Logon = Failure") to trigger GUI visibility.
+    Enabling auditing for account lockout events provides visibility into potential brute-force or unauthorised access attempts.
+    This script uses the AuditPol utility to configure the "Account Lockout" subcategory for "Failure" events.
+    The change is immediate, persists until overridden by GPO, and is visible in both AuditPol and Group Policy Editor.
 
 .NOTES
     Author          : Ruben Clarke
@@ -15,13 +13,13 @@
     GitHub          : github.com/itsrubenclarke
     Date Created    : 19-05-2025
     Last Modified   : 19-05-2025
-    Version         : 1.1
+    Version         : 1.2
     STIG-ID         : WN10-AU-000054
 
 .TESTED ON
-    Date(s) Tested  :  
-    Tested By       :  
-    Systems Tested  :  
+    Date(s) Tested  : 19-05-2025
+    Tested By       : Ruben Clarke
+    Systems Tested  : Windows 10 Enterprise
     PowerShell Ver. : 5.1+
 
 .USAGE
@@ -30,53 +28,17 @@
     PS C:\> .\WN10-AU-000054.ps1
 
 .VERIFICATION
-    Option 1 – Command Line (AuditPol):
-    1. Open PowerShell as Administrator
-    2. Run:
-       AuditPol /get /subcategory:"Account Lockout"
-    3. Expected output:
-       Account Lockout          Failure
-
-    Option 2 – Export and Inspect INF:
+    PowerShell:
     1. Run:
-       secedit /export /cfg "$env:temp\verify_audit.inf"
-    2. Then:
-       Get-Content "$env:temp\verify_audit.inf" | Select-String "Account Lockout"
-    3. Confirm:
-       Account Lockout = Failure
-    4. Clean up:
-       Remove-Item "$env:temp\verify_audit.inf"
+       AuditPol /get /subcategory:"Account Lockout"
+    2. Confirm:
+       Account Lockout    Failure
 
-    Option 3 – GUI Confirmation:
-    1. Open Group Policy Editor (`gpedit.msc`)
-    2. Go to:
-       Computer Configuration → Windows Settings → Security Settings → Advanced Audit Policy Configuration → System Audit Policies → Logon/Logoff
-    3. Ensure:
-       “Audit Account Lockout” is configured for “Failure”  
-       “Audit Logon” is configured for “Failure”  
-       The Logon/Logoff category now displays as “Configured”
 #>
 
-# STEP 1: Define the INF file content
-# To ensure GUI visibility, we set two subcategories under Logon/Logoff
-$infContent = @"
-[Version]
-signature="\$CHICAGO$"
+# STEP 1: Apply the audit setting using AuditPol
+# This sets auditing for account lockout events to "Failure"
+AuditPol /set /subcategory:"Account Lockout" /failure:enable | Out-Null
 
-[AuditPolicy]
-Account Lockout = Failure
-Logon = Failure
-"@
-
-# STEP 2: Save the INF file temporarily
-$infPath = "$env:temp\WN10-AU-000054.inf"
-$infContent | Out-File -FilePath $infPath -Encoding ASCII -Force
-
-# STEP 3: Apply the audit settings using secedit to write into the LGPO database
-secedit /configure /db "$env:windir\security\database\local.sdb" /cfg $infPath /quiet
-
-# STEP 4: Clean up temporary file
-Remove-Item $infPath -Force
-
-# STEP 5: Output result to user
-Write-Host "STIG WN10-AU-000054 remediated. 'Account Lockout' and 'Logon' failures configured."
+# STEP 2: Confirm remediation
+Write-Host "STIG WN10-AU-000054 remediated. 'Audit Account Lockout' is now configured for Failure."
