@@ -48,7 +48,7 @@ You can review the full Tenable scan results before and after remediation:
 |--------|-------|------|
 | [WN10-AC-000005](https://stigaview.com/products/win10/v2r8/WN10-AC-000005/) | Windows 10 account lockout duration must be configured to 15 minutes or greater. | [View Details](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/Scripts/WN10-AC-000005.ps1) |
 | [WN10-AC-000010](https://stigaview.com/products/win10/v2r8/WN10-AC-000010/) | The number of allowed bad logon attempts must be configured to 3 or fewer. | [View Details](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/Scripts/WN10-AC-000010.ps1) |
-| WN10-AU-000045 | The system must be configured to audit Detailed File Share failures. | [View Details](./WN10-AU-000045) |
+| [WN10-AU-000045](https://stigaview.com/products/win10/v2r8/WN10-AU-000045/) | The system must be configured to audit Detailed File Share failures. | [View Details](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/Scripts/WN10-AU-000045.ps1) |
 | WN10-AU-000054 | The system must be configured to audit Logon/Logoff failures. | [View Details](./WN10-AU-000054) |
 | WN10-AU-000060 | The system must be configured to audit Logon/Logoff - Group Membership successes. | [View Details](./WN10-AU-000060) |
 | WN10-AU-000110 | The system must be configured to audit Privilege Use - Sensitive Privilege Use failures. | [View Details](./WN10-AU-000110) |
