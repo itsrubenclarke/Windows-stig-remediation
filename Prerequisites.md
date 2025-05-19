@@ -10,10 +10,10 @@ If you’ve previously tested or applied changes, starting from a clean baseline
 
 **Run the following in PowerShell:**
 ```powershell
-# 1st clear all custom audit policy settings
+# 1st, clear all custom audit policy settings
 auditpol /clear
 
-# Then Reapply baseline policies
+# Then, reapply baseline policies
 gpupdate /force
 ```
 **🔁 Restart your system before proceeding to ensure default audit settings are fully applied.**
