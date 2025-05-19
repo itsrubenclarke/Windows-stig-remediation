@@ -1,25 +1,26 @@
 <#
 .SYNOPSIS
-    This PowerShell script configures the Account Lockout Duration to 15 minutes, in alignment with STIG ID WN10-AC-000005.
+    Configures the system to enforce a 15-minute lockout period after failed login attempts, per STIG ID WN10-AC-000005.
 
 .DESCRIPTION
-    When users fail to log in multiple times, this setting locks their account for a set duration. According to the STIG requirement, the system must be configured to lock the account for at least 15 minutes after failed attempts.
-    This script automatically makes that change using Windows built-in policy tools.
+    This script modifies the "Account lockout duration" policy to ensure that, once an account is locked,
+    it remains inaccessible for at least 15 minutes. This helps slow down brute-force password attacks.
+    The policy is applied using secedit and is written to the local security database (local.sdb).
 
 .NOTES
     Author          : Ruben Clarke
     LinkedIn        : linkedin.com/in/itsrubenclarke/
     GitHub          : github.com/itsrubenclarke
-    Date Created    : 18-05-2025
-    Last Modified   : 18-05-2025
-    Version         : 1.0
+    Date Created    : 19-05-2025
+    Last Modified   : 19-05-2025
+    Version         : 1.1
     STIG-ID         : WN10-AC-000005
 
 .TESTED ON
-    Date(s) Tested  : 
-    Tested By       : 
-    Systems Tested  : 
-    PowerShell Ver. :
+    Date(s) Tested  : 19-05-2025
+    Tested By       : Ruben Clarke
+    Systems Tested  : Windows 10 Enterprise
+    PowerShell Ver. : 5.1+
 
 .USAGE
     Run this script as an administrator from PowerShell:
@@ -27,56 +28,39 @@
     PS C:\> .\WN10-AC-000005.ps1
 
 .VERIFICATION
-    To verify that the Account Lockout Duration has been correctly applied:
-
-    Option 1 – GUI Method:
-    1. Press Win + R, type `gpedit.msc`, and press Enter.
-    2. Navigate to:
+    GUI:
+    1. Run `gpedit.msc`
+    2. Go to:
        Computer Configuration → Windows Settings → Security Settings → Account Policies → Account Lockout Policy
-    3. Confirm that "Account lockout duration" is set to 15 minutes.
-       If the value is lower or not defined, the remediation has not applied.
+    3. Confirm:
+       “Account lockout duration” is set to 15 or greater
 
-    Option 2 – Command Line Method:
-    1. Export the local security policy to a temporary file:
-       secedit /export /cfg "$env:temp\verify-lockout-duration.inf"
-    2. Run the following command:
-       Select-String -Path "$env:temp\verify-lockout-duration.inf" -Pattern "LockoutDuration"
-    3. Expected output:
-       LockoutDuration = 15
-
-    4. (Optional) Clean up:
-       Remove-Item "$env:temp\verify-lockout-duration.inf"
 #>
 
-# STEP 1: Define a temporary file path where we will export the current security settings.
-# Think of this as creating a copy of the system's current lockout settings.
-$tempInfPath = "$env:temp\account_lockout.inf"
+# STEP 1: Define temporary file path
+$tempInfPath = "$env:temp\lockout_duration.inf"
 
-# STEP 2: Export the system's current security policy settings into that temporary file.
-# This includes all local policy settings like account lockout, password rules, etc.
+# STEP 2: Export current policy configuration
 secedit /export /cfg $tempInfPath > $null
 
-# STEP 3: Read the contents of the exported file into memory so we can look for the specific setting we want to change.
+# STEP 3: Load content into memory
 $content = Get-Content $tempInfPath
 
-# STEP 4: Check if "LockoutDuration" already exists in the file.
-# If it does, replace its value with 15. If not, add the setting to the end of the file.
+# STEP 4: Modify or append LockoutDuration setting
 if ($content -match "LockoutDuration") {
     $content = $content -replace 'LockoutDuration = \d+', 'LockoutDuration = 15'
 } else {
     $content += "`nLockoutDuration = 15"
 }
 
-# STEP 5: Save the updated content back to the same file.
-# This updates the security configuration with our new setting.
+# STEP 5: Save the updated policy
 $content | Set-Content -Path $tempInfPath
 
-# STEP 6: Apply the updated policy to the system.
-# This pushes the changes into the system's local security policy database.
+# STEP 6: Apply the new policy using secedit
 secedit /configure /db "$env:windir\security\local.sdb" /cfg $tempInfPath /quiet
 
-# STEP 7: Delete the temporary file to keep the system clean.
+# STEP 7: Delete temporary file
 Remove-Item $tempInfPath -Force
 
-# STEP 8: Output confirmation to the terminal so the user knows the change has been applied.
-Write-Host "STIG WN10-AC-000005 remediated. Account lockout duration has been set to 15 minutes."
+# STEP 8: Confirmation message
+Write-Host "STIG WN10-AC-000005 remediated. Account lockout duration set to 15 minutes."
