@@ -64,7 +64,7 @@ You can review the full Tenable scan results before and after remediation:
 | [WN10-CC-000007](https://stigaview.com/products/win10/v2r8/WN10-CC-000007/) | Windows 10 must cover or disable the built-in or attached camera when not in use. | [View Details](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/Scripts/WN10-CC-000007.ps1) |
 | [WN10-CC-000010](https://stigaview.com/products/win10/v2r8/WN10-CC-000010/) | The display of slide shows on the lock screen must be disabled. | [View Details](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/Scripts/WN10-CC-000010.ps1) |
 
-▶ More PowerShell remediations can be found [here](./WN10-CC-000010).
+▶ More PowerShell remediations can be found [here](https://github.com/itsrubenclarke/Windows-stig-remediation/tree/main/Scripts).
 
 
 
