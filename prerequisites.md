@@ -16,7 +16,7 @@ auditpol /clear
 # Then Reapply baseline policies
 gpupdate /force
 ```
-At this point, restart your computer.
+**🔁 Restart your system before proceeding to ensure default audit settings are fully applied.**
 
 ## 2. Check Current Audit Policy Configuration
 
@@ -26,7 +26,7 @@ You can inspect the current audit policy settings at any time with the following
 auditpol /get /category:*
 ```
 
-## 3. Enable Subcategory, Based Audit Policy Enforcement
+## 3. Enable Subcategory-Based Audit Policy Enforcement
 Many DISA STIG audit controls are defined at the subcategory level, which are ignored unless subcategory processing is explicitly enabled.
 
 **Run the following in PowerShell:**
