@@ -14,9 +14,10 @@ This repository demonstrates a structured approach to identifying and addressing
   
 It combines enterprise compliance scanning with automated remediation using PowerShell.
 
-📄 **Before running any scripts, please review the [Prerequisites Guide](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/prerequisites.md)** 
+> [!NOTE]
+> **Before running any scripts, please review the [Prerequisites Guide.](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/prerequisites.md)** 
 
-To ensure audit policies are correctly configured and changes are verifiable.
+To ensure that audit policies are correctly configured and changes are verifiable.
 
 After conducting a credentialed compliance scan in Tenable, several configuration issues were identified...
 
