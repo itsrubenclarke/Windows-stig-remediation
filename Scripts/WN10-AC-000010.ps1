@@ -1,24 +1,25 @@
 <#
 .SYNOPSIS
-    This PowerShell script configures the system to lock a user account after 3 failed login attempts, in compliance with STIG ID WN10-AC-000010.
+    Configures the system to trigger an account lockout after 3 failed login attempts, per STIG ID WN10-AC-000010.
 
 .DESCRIPTION
-    To help prevent brute-force password attacks, DISA STIGs require that the system locks out a user after a small number of failed login attempts. 
-    This script updates the “Account lockout threshold” setting in the system’s local security policy to 3 attempts — or fewer if already stricter.
+    To reduce the risk of brute-force password attacks, DISA STIGs require systems to lock accounts after a small number of failed login attempts.
+    This script configures the "Account lockout threshold" setting to 3 attempts using Windows security policy tools.
+    The change is written to the local security database (local.sdb) and is persistent across reboots.
 
 .NOTES
     Author          : Ruben Clarke
     LinkedIn        : linkedin.com/in/itsrubenclarke/
     GitHub          : github.com/itsrubenclarke
-    Date Created    : 18-05-2025
-    Last Modified   : 18-05-2025
-    Version         : 1.0
+    Date Created    : 19-05-2025
+    Last Modified   : 19-05-2025
+    Version         : 1.1
     STIG-ID         : WN10-AC-000010
 
 .TESTED ON
-    Date(s) Tested  : 
-    Tested By       : 
-    Systems Tested  : 
+    Date(s) Tested  : 19-05-2025
+    Tested By       : Ruben Clarke
+    Systems Tested  : Windows 10 Enterprise
     PowerShell Ver. : 5.1+
 
 .USAGE
@@ -27,51 +28,39 @@
     PS C:\> .\WN10-AC-000010.ps1
 
 .VERIFICATION
-    To confirm that the "Account lockout threshold" has been correctly applied:
-
-    Option 1 – GUI Method:
-    1. Press Win + R, type `gpedit.msc`, and press Enter.
-    2. Navigate to:
+    GUI:
+    1. Run `gpedit.msc`
+    2. Go to:
        Computer Configuration → Windows Settings → Security Settings → Account Policies → Account Lockout Policy
-    3. Confirm that "Account lockout threshold" is set to 3.
-       Values higher than 3 or set to 0 are noncompliant.
+    3. Confirm:
+       “Account lockout threshold” is set to 3 or fewer
 
-    Option 2 – Command Line Method:
-    1. Export the current security policy to a temporary file:
-       secedit /export /cfg "$env:temp\audit-check.inf"
-    2. Run the following command:
-       Select-String -Path "$env:temp\audit-check.inf" -Pattern "LockoutBadCount"
-    3. Expected result:
-       LockoutBadCount = 3
-
-    4. (Optional) Clean up:
-       Remove-Item "$env:temp\audit-check.inf"
 #>
 
-# STEP 1: Define a temporary file path to hold the exported security policy
+# STEP 1: Define temp file to hold the security policy snapshot
 $tempInfPath = "$env:temp\lockout_threshold.inf"
 
-# STEP 2: Export the current system security settings
+# STEP 2: Export current policy settings
 secedit /export /cfg $tempInfPath > $null
 
-# STEP 3: Load contents of the exported file
+# STEP 3: Read file content
 $content = Get-Content $tempInfPath
 
-# STEP 4: Search and replace or insert the required setting
+# STEP 4: Search and update or append the required line
 if ($content -match "LockoutBadCount") {
     $content = $content -replace 'LockoutBadCount = \d+', 'LockoutBadCount = 3'
 } else {
     $content += "`nLockoutBadCount = 3"
 }
 
-# STEP 5: Save updated settings
+# STEP 5: Save updated content back to the file
 $content | Set-Content -Path $tempInfPath
 
-# STEP 6: Apply changes to local security policy
+# STEP 6: Apply changes to local security policy database
 secedit /configure /db "$env:windir\security\local.sdb" /cfg $tempInfPath /quiet
 
-# STEP 7: Clean up
+# STEP 7: Clean up temp file
 Remove-Item $tempInfPath -Force
 
-# STEP 8: Output confirmation to the terminal so the user knows the change has been applied.
-Write-Host "STIG WN10-AC-000010 remediated. Account lockout threshold has been set to 3 attempts."
+# STEP 8: Notify completion
+Write-Host "STIG WN10-AC-000010 remediated. Account lockout threshold set to 3."
