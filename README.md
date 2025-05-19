@@ -15,7 +15,7 @@ This repository demonstrates a structured approach to identifying and addressing
 It combines enterprise compliance scanning with automated remediation using PowerShell.
 
 > [!NOTE]
-> **Before running any scripts, please review the [Prerequisites Guide.](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/prerequisites.md)** 
+> **Before running any scripts, please review the [Prerequisites Guide.](https://github.com/itsrubenclarke/Windows-stig-remediation/blob/main/Prerequisites.md)** 
 
 To ensure that audit policies are correctly configured and changes are verifiable.
 
