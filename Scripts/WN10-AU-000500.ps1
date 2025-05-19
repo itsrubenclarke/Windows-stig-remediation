@@ -3,12 +3,12 @@
     This PowerShell script ensures that the maximum size of the Windows Application event log is at least 32768 KB (32 MB), in compliance with STIG ID WN10-AU-000500.
 
 .DESCRIPTION
-    The Windows Application event log is used to capture events written by applications and system services. 
-    If the log size is too small, important entries may be overwritten before they can be reviewed or exported, 
+    The Windows Application event log is used to capture events written by applications and system services.  
+    If the log size is too small, important entries may be overwritten before they can be reviewed or exported,  
     which presents a risk to auditability and incident response readiness.
 
-    This script modifies the system’s registry to set the Application event log maximum size to 32768 KB (32 MB) 
-    or greater. The change aligns with DISA STIG guidance and ensures sufficient log retention for compliance and investigation purposes.
+    This script modifies the system’s registry to set the Application event log maximum size to 32768 KB (32 MB) or greater.  
+    The change aligns with DISA STIG guidance and ensures sufficient log retention for compliance and investigation purposes.
 
 .NOTES
     Author          : Ruben Clarke
@@ -16,17 +16,17 @@
     GitHub          : github.com/itsrubenclarke
     Date Created    : 18-05-2025
     Last Modified   : 18-05-2025
-    Version         : 1.0
+    Version         : 1.1
     STIG-ID         : WN10-AU-000500
 
 .TESTED ON
-    Date(s) Tested  : 
-    Tested By       : 
-    Systems Tested  : 
+    Date(s) Tested  : 19-05-2025
+    Tested By       : Ruben Clarke
+    Systems Tested  : Windows 10 Enterprise
     PowerShell Ver. : 5.1+
 
 .USAGE
-    Run this script as an administrator from PowerShell:
+    Run this script as an administrator from PowerShell ISE or terminal:
     Example:
     PS C:\> .\WN10-AU-000500.ps1
 
@@ -35,10 +35,8 @@
 
     Option 1 – GUI Method:
     1. Open Event Viewer (`eventvwr.msc`)
-    2. In the left pane, expand:
-       Event Viewer → Windows Logs → Application
-    3. Right-click "Application" → Properties
-    4. Confirm that "Maximum log size (KB)" is set to at least 32768
+    2. Navigate to: Windows Logs → Application → Right-click → Properties
+    3. Confirm that "Maximum log size (KB)" is set to at least 32768
 
     Option 2 – Registry Check:
     1. Open PowerShell and run:
@@ -53,15 +51,13 @@ $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application"
 $valueName = "MaxSize"
 $valueData = 32768  # Value is in KB (32 MB)
 
-# STEP 2: Check if the registry path exists.
-# If it does not exist, create it so we can apply the policy.
+# STEP 2: Check if the registry path exists. If not, create it. Suppress output.
 if (-not (Test-Path $registryPath)) {
-    New-Item -Path $registryPath -Force
+    New-Item -Path $registryPath -Force | Out-Null
 }
 
-# STEP 3: Set the registry value for MaxSize to 32768 KB.
-# This enforces the minimum size for log retention as defined by the STIG requirement.
-Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord
+# STEP 3: Set the registry value to 32768 KB. Suppress output.
+Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
-# STEP 4: Output confirmation to the terminal so the user knows the change has been applied.
+# STEP 4: Display a single-line confirmation message.
 Write-Host "STIG WN10-AU-000500 remediated. Registry value '$valueName' set to '$valueData' at '$registryPath'."
