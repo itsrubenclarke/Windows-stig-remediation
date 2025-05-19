@@ -79,4 +79,4 @@ secedit /configure /db "$env:windir\security\database\local.sdb" /cfg $infPath /
 Remove-Item $infPath -Force
 
 # STEP 5: Output result to user
-Write-Host "STIG WN10-AU-000054 remediated. 'Account Lockout' and 'Logon' failures configured. GUI should now reflect this change."
+Write-Host "STIG WN10-AU-000054 remediated. 'Account Lockout' and 'Logon' failures configured."
