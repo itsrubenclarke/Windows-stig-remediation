@@ -6,7 +6,7 @@
     This script modifies the registry to deny applications access to the camera by updating the Value at:
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam
 
-    Setting this value to "Deny" ensures the system complies with security policy by preventing access to the camera when not explicitly authorised. 
+    Setting this value to "Deny" ensures the system complies with the security policy by preventing camera access when not authorised. 
     This is particularly important when the device lacks a physical disconnect method (e.g., cover or hardware disable).
 
 .NOTES
