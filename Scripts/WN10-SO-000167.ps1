@@ -50,4 +50,4 @@ If (-Not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type String | Out-Null
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-SO-000167 remediated. Remote SAM access is now restricted to Administrators only."
+Write-Host "STIG WN10-SO-000167 remediated. Remote SAM access is now restricted to Administrators only." -ForegroundColor Green
