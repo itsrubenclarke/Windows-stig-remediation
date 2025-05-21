@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     PowerShell Transcription records detailed logs of all PowerShell commands and output during execution.
-    This setting helps support incident investigation, forensic review, and tracking of suspicious or unauthorized script activity.
+    This setting helps support incident investigation, forensic review, and tracking of suspicious or unauthorised script activity.
     This script configures the registry key to enable transcription, aligning with DISA STIG recommendations.
 
 .NOTES
@@ -51,4 +51,4 @@ If (-Not (Test-Path $regPath)) {
 Set-ItemProperty -Path $regPath -Name $regName -Value $regValue -Type DWord | Out-Null
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000327 remediated. PowerShell Transcription has been enabled (EnableTranscripting = 1)."
+Write-Host "STIG WN10-CC-000327 remediated. PowerShell Transcription has been enabled (EnableTranscripting = 1)." -ForegroundColor Green
