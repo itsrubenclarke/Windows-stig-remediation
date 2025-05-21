@@ -51,4 +51,4 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000010 remediated. Lock screen slideshow disabled by setting '$valueName' to '$valueData' at '$registryPath'."
+Write-Host "STIG WN10-CC-000010 remediated. Lock screen slideshow disabled by setting '$valueName' to '$valueData' at '$registryPath'." -ForegroundColor Green
