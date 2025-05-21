@@ -36,7 +36,7 @@
        AlwaysInstallElevated : 0
 #>
 
-# STEP 1: Define the registry path and setting
+# STEP 1: Define the registry path and settings
 $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Installer"
 $name = "AlwaysInstallElevated"
 $value = 0
@@ -50,4 +50,4 @@ if (-not (Test-Path $registryPath)) {
 New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType DWord -Force | Out-Null
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000315 remediated. 'Always install with elevated privileges' is now disabled."
+Write-Host "STIG WN10-CC-000315 remediated. 'Always install with elevated privileges' is now disabled." -ForegroundColor Green
