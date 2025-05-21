@@ -5,7 +5,7 @@
 
 .DESCRIPTION
     Credential validation auditing logs successful attempts to validate credentials during account logon.
-    This is critical for detecting unauthorized access and understanding successful authentication activity.
+    This is critical for detecting unauthorised access and understanding successful authentication activity.
 
     This script applies the required audit policy via the AuditPol utility for:
     "Account Logon >> Credential Validation" set to Success.
@@ -44,4 +44,4 @@
 AuditPol /set /subcategory:"Credential Validation" /success:enable | Out-Null
 
 # STEP 2: Output confirmation
-Write-Host "STIG WN10-AU-000010 remediated. 'Credential Validation' is now configured for Success."
+Write-Host "STIG WN10-AU-000010 remediated. 'Credential Validation' is now configured for Success." -ForegroundColor Green
