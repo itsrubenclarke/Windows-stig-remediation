@@ -5,7 +5,7 @@
 
 .DESCRIPTION
     Solicited Remote Assistance enables users to request help that grants interactive access to their session.
-    This presents a potential security risk if exploited by unauthorized users.
+    This presents a potential security risk if exploited by unauthorised users.
     This script configures the registry to prevent users from initiating Solicited Remote Assistance requests.
 
 .NOTES
@@ -52,4 +52,4 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000155 remediated. 'Solicited Remote Assistance' is now disabled at '$registryPath'."
+Write-Host "STIG WN10-CC-000155 remediated. 'Solicited Remote Assistance' is now disabled at '$registryPath'." -ForegroundColor Green
