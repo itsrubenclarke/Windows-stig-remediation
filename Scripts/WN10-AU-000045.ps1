@@ -43,4 +43,4 @@
 AuditPol /set /subcategory:"Plug and Play Events" /success:enable | Out-Null
 
 # STEP 2: Output confirmation
-Write-Host "STIG WN10-AU-000045 remediated. 'Audit PNP Activity' is now configured for Success."
+Write-Host "STIG WN10-AU-000045 remediated. 'Audit PNP Activity' is now configured for Success." -ForegroundColor Green
