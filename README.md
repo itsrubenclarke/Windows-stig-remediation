@@ -42,11 +42,11 @@ You can review the full Tenable scan results before and after remediation:
 <table><tr><td><img src="https://github.com/user-attachments/assets/200d06be-da3e-4822-9a29-604d1bfa1cb3"  alt="Pre-Remediation Scan"></td></tr></table>
 
 
-- 🔍 **Pre-Remediation Scan Report**: [Download PDF](https://github.com/user-attachments/files/20245052/Tenable-Scan-Before-Remediation.pdf)
+- 🔍 **Pre-Remediation Scan Report**: [Click To View](https://github.com/itsrubenclarke/windows-stig-remediation/blob/main/Scan-Reports/Tenable-Scan-Before-Remediation.pdf)
 
 <table><tr><td><img src="https://github.com/user-attachments/assets/2e71c008-92d3-4229-a11a-81f95d6b8adf"  alt="Post-Remediation Scan"></td></tr></table>
 
-- ✅ **Post-Remediation Scan Report**: [Download PDF](./reports/Tenable-Scan-After-Remediation.pdf)
+- ✅ **Post-Remediation Scan Report**: [Click To View](https://github.com/itsrubenclarke/windows-stig-remediation/blob/main/Scan-Reports/Tenable-Scan-After-Remediation.pdf)
 
 
 
