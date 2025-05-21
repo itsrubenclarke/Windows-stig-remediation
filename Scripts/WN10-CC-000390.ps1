@@ -48,4 +48,4 @@ If (-Not (Test-Path $regPath)) {
 Set-ItemProperty -Path $regPath -Name "DisableThirdPartySuggestions" -Value 1 -Type DWord
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000390 remediated. Third-party suggestions in Windows Spotlight are now disabled."
+Write-Host "STIG WN10-CC-000390 remediated. Third-party suggestions in Windows Spotlight are now disabled." -ForegroundColor Green
