@@ -52,4 +52,4 @@ If (-Not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
 # STEP 4: Output success message
-Write-Host "STIG WN10-CC-000068 remediated. 'AllowProtectedCreds' set to 1 (enabled)."
+Write-Host "STIG WN10-CC-000068 remediated. 'AllowProtectedCreds' set to 1 (enabled)." -ForegroundColor Green
