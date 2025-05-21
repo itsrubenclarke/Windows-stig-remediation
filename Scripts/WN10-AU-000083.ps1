@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     This script configures the local audit policy to track successful events under the "Other Object Access Events" category. 
-    Auditing this category helps detect changes and accesses to COM+ objects and task scheduler jobs, contributing to 
+    Auditing this category helps detect changes and access to COM+ objects and task scheduler jobs, contributing to 
     security monitoring and incident response.
 
 .NOTES
@@ -41,5 +41,5 @@
 AuditPol /set /subcategory:"Other Object Access Events" /success:enable /failure:disable
 
 # STEP 2: Confirmation output
-Write-Host "STIG WN10-AU-000083 remediated. 'Other Object Access Events' is now audited for Success."
+Write-Host "STIG WN10-AU-000083 remediated. 'Other Object Access Events' is now audited for Success." -ForegroundColor Green
  
