@@ -35,7 +35,7 @@
        net accounts
 
     2. Expected output should include:
-       Minimum password age (days): 1
+       Minimum password age (days): 1 
 #>
 
 # STEP 1: Enforce minimum password age of 1 day
