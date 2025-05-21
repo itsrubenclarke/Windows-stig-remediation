@@ -45,4 +45,4 @@ $regValue = 2
 New-ItemProperty -Path $regPath -Name $regName -Value $regValue -PropertyType DWORD -Force | Out-Null
 
 # STEP 3: Output confirmation
-Write-Host "STIG WN10-CC-000020 remediated. IPv6 source routing is now set to 'Highest Protection' (value 2)."
+Write-Host "STIG WN10-CC-000020 remediated. IPv6 source routing is now set to 'Highest Protection' (value 2)." -ForegroundColor Green
