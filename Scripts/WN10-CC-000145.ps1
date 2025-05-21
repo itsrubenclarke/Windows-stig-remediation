@@ -52,4 +52,4 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000145 remediated. 'Require password on resume (on battery)' is now enforced."
+Write-Host "STIG WN10-CC-000145 remediated. 'Require password on resume (on battery)' is now enforced." -ForegroundColor Green
