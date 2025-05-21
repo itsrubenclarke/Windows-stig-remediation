@@ -62,4 +62,4 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData
 
 # STEP 4: Output confirmation
-Write-Host "STIG WN10-CC-000007 remediated. Camera access is now set to '$valueData'."
+Write-Host "STIG WN10-CC-000007 remediated. Camera access is now set to '$valueData'." -ForegroundColor Green
