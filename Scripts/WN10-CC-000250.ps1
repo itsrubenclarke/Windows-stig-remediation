@@ -52,4 +52,4 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
 # STEP 4: Confirmation
-Write-Host "STIG WN10-CC-000250 remediated. 'SmartScreen for Microsoft Edge' is now enabled at '$registryPath'."
+Write-Host "STIG WN10-CC-000250 remediated. 'SmartScreen for Microsoft Edge' is now enabled at '$registryPath'." -ForegroundColor Green
