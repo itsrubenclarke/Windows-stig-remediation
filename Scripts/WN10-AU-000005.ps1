@@ -11,7 +11,7 @@
     GitHub          : github.com/itsrubenclarke
     Date Created    : 21-05-2025
     Last Modified   : 21-05-2025
-    Version         : 1.0
+    Version         : 1.1
     STIG-ID         : WN10-AU-000005
 
 .TESTED ON
@@ -36,7 +36,7 @@
 #>
 
 # Enable auditing for Credential Validation (Failure only)
-AuditPol /set /subcategory:"Credential Validation" /failure:enable
+AuditPol /set /subcategory:"Credential Validation" /success:disable /failure:enable
 
 Write-Host "STIG WN10-AU-000005 remediated. 'Credential Validation' is now audited on failure."
  
