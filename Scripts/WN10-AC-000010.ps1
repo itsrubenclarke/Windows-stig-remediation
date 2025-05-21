@@ -63,4 +63,4 @@ secedit /configure /db "$env:windir\security\local.sdb" /cfg $tempInfPath /quiet
 Remove-Item $tempInfPath -Force
 
 # STEP 8: Notify completion
-Write-Host "STIG WN10-AC-000010 remediated. Account lockout threshold set to 3."
+Write-Host "STIG WN10-AC-000010 remediated. Account lockout threshold set to 3." -ForegroundColor Green
