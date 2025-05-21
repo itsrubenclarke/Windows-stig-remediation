@@ -3,7 +3,7 @@
     Enables auditing for Account Logon → Credential Validation (Failure), in compliance with STIG ID WN10-AU-000005.
 
 .DESCRIPTION
-    This script ensures that auditing is enabled for failed credential validation attempts, which helps identify logon issues and potential unauthorized access attempts.
+    This script ensures that auditing is enabled for failed credential validation attempts, which helps identify logon issues and potential unauthorised access attempts.
 
 .NOTES
     Author          : Ruben Clarke
@@ -38,5 +38,5 @@
 # Enable auditing for Credential Validation (Failure only)
 AuditPol /set /subcategory:"Credential Validation" /success:disable /failure:enable
 
-Write-Host "STIG WN10-AU-000005 remediated. 'Credential Validation' is now audited on failure."
+Write-Host "STIG WN10-AU-000005 remediated. 'Credential Validation' is now audited on failure." -ForegroundColor Green
  
