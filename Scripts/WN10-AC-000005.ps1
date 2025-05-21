@@ -63,4 +63,4 @@ secedit /configure /db "$env:windir\security\local.sdb" /cfg $tempInfPath /quiet
 Remove-Item $tempInfPath -Force
 
 # STEP 8: Confirmation message
-Write-Host "STIG WN10-AC-000005 remediated. Account lockout duration set to 15 minutes."
+Write-Host "STIG WN10-AC-000005 remediated. Account lockout duration set to 15 minutes." -ForegroundColor Green
