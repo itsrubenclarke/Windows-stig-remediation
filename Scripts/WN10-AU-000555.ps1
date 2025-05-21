@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     This script configures the local audit policy to track failure events under the "Other Policy Change Events" category.
-    Monitoring this helps detect unauthorized changes to EFS DRA settings, Windows Filtering Platform rules, and Group Policy updates.
+    Monitoring this helps detect unauthorised changes to EFS DRA settings, Windows Filtering Platform rules, and Group Policy updates.
 
 .NOTES
     Author       : Ruben Clarke
