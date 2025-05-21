@@ -41,4 +41,4 @@
 AuditPol /set /subcategory:"User Account Management" /failure:enable | Out-Null
 
 # STEP 2: Output confirmation
-Write-Host "STIG WN10-AU-000035 remediated. 'User Account Management' auditing is now enabled for failures."
+Write-Host "STIG WN10-AU-000035 remediated. 'User Account Management' auditing is now enabled for failures." -ForegroundColor Green
