@@ -3,7 +3,7 @@
     Prevents saving passwords in the Remote Desktop Client, in compliance with STIG ID WN10-CC-000270.
 
 .DESCRIPTION
-    Saving passwords in the Remote Desktop Client may expose user credentials to unauthorized users.
+    Saving passwords in the Remote Desktop Client may expose user credentials to unauthorised users.
     This script sets the required registry key to disallow password saving in Remote Desktop Connection.
 
 .NOTES
@@ -49,4 +49,4 @@ if (-not (Test-Path $registryPath)) {
 New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType DWord -Force | Out-Null
 
 # STEP 3: Output confirmation
-Write-Host "STIG WN10-CC-000270 remediated. Password saving in the Remote Desktop Client is now disabled."
+Write-Host "STIG WN10-CC-000270 remediated. Password saving in the Remote Desktop Client is now disabled." -ForegroundColor Green
