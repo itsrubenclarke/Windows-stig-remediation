@@ -55,4 +55,4 @@ if (-not $currentOption) {
 Start-Process -FilePath "auditpol.exe" -ArgumentList "/set /subcategory:`"Group Membership`" /success:enable" -NoNewWindow -Wait
 
 # STEP 2: Confirm remediation success
-Write-Host "STIG WN10-AU-000060 remediated. 'Group Membership' is now configured for Success."
+Write-Host "STIG WN10-AU-000060 remediated. 'Group Membership' is now configured for Success." -ForegroundColor Green
