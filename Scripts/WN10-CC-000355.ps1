@@ -51,5 +51,5 @@ if (-not (Test-Path $registryPath)) {
 # STEP 3: Apply the required registry value
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
-# STEP 4: Output confirmation to console
-Write-Host "STIG WN10-CC-000355 remediated. 'DisableRunAs' set to 1 at $registryPath."
+# STEP 4: Output confirmation 
+Write-Host "STIG WN10-CC-000355 remediated. 'DisableRunAs' set to 1 at $registryPath." -ForegroundColor Green
