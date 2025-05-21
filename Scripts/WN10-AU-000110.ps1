@@ -48,4 +48,4 @@ Start-Process -FilePath "auditpol.exe" -ArgumentList "/set /option:SCENoApplyLeg
 Start-Process -FilePath "auditpol.exe" -ArgumentList "/set /subcategory:`"Sensitive Privilege Use`" /failure:enable" -NoNewWindow -Wait
 
 # STEP 3: Output confirmation message
-Write-Host "STIG WN10-AU-000110 remediated. 'Sensitive Privilege Use' is now configured to audit failures."
+Write-Host "STIG WN10-AU-000110 remediated. 'Sensitive Privilege Use' is now configured to audit failures."-ForegroundColor Green
