@@ -41,4 +41,4 @@
 AuditPol /set /subcategory:"Account Lockout" /failure:enable | Out-Null
 
 # STEP 2: Confirm remediation
-Write-Host "STIG WN10-AU-000054 remediated. 'Audit Account Lockout' is now configured for Failure."
+Write-Host "STIG WN10-AU-000054 remediated. 'Audit Account Lockout' is now configured for Failure." -ForegroundColor Green
