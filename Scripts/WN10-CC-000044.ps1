@@ -47,4 +47,4 @@ If (-Not (Test-Path $regPath)) {
 Set-ItemProperty -Path $regPath -Name "NC_ShowSharedAccessUI" -Value 0 -Type DWord
 
 # STEP 3: Output confirmation
-Write-Host "STIG WN10-CC-000044 remediated. Internet Connection Sharing UI has been disabled."
+Write-Host "STIG WN10-CC-000044 remediated. Internet Connection Sharing UI has been disabled." -ForegroundColor Green
