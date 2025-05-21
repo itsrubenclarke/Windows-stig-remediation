@@ -50,4 +50,4 @@ if (-not (Test-Path $registryPath)) {
 New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType DWord -Force | Out-Null
 
 # STEP 4: Confirmation
-Write-Host "STIG WN10-CC-000391 remediated. IE11 is now disabled as a standalone browser."
+Write-Host "STIG WN10-CC-000391 remediated. IE11 is now disabled as a standalone browser." -ForegroundColor Green
