@@ -54,4 +54,4 @@ if (-not (Test-Path $registryPath)) {
 Set-ItemProperty -Path $registryPath -Name $valueName -Value $valueData -Type DWord | Out-Null
 
 # STEP 4: Display confirmation only
-Write-Host "STIG WN10-AU-000510 remediated. Registry value '$valueName' set to '$valueData' at '$registryPath'."
+Write-Host "STIG WN10-AU-000510 remediated. Registry value '$valueName' set to '$valueData' at '$registryPath'." -ForegroundColor Green
