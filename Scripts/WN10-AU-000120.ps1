@@ -1,11 +1,11 @@
 <#
 .SYNOPSIS
-    This PowerShell script configures the system to audit System - IPSec Driver failures, 
+    This PowerShell script configures the system to audit System - IPSec Driver failures. 
     in compliance with STIG ID WN10-AU-000120.
 
 .DESCRIPTION
     Auditing IPSec Driver failures helps capture events such as dropped IPsec packets, 
-    which are useful for identifying configuration issues, traffic rejection, or unauthorized system activity.
+    which are useful for identifying configuration issues, traffic rejection, or unauthorised system activity.
 
     This script enables auditing for the IPSec Driver failure subcategory using `auditpol`, 
     ensuring visibility in both the command line (`AuditPol`) and Group Policy GUI (`gpedit.msc`). 
@@ -61,4 +61,4 @@ Start-Process -FilePath "auditpol.exe" `
     -NoNewWindow -Wait
 
 # STEP 3: Output confirmation
-Write-Host "STIG WN10-AU-000120 remediated. 'Audit IPSec Driver' is now configured for Failure."
+Write-Host "STIG WN10-AU-000120 remediated. 'Audit IPSec Driver' is now configured for Failure." -ForegroundColor Green
